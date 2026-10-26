@@ -62,3 +62,9 @@ data/raw/
 fonts/
 *.tgz
 *.tar.gz
+
+# Temporary debug files
+debug_*.png
+*_debug*
+temp*
+*.tmp
