@@ -215,23 +215,27 @@ def plot_training_results(
     fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(14, 5))
     
     # Loss plot
-    ax1.plot(epochs, history["train_loss"], label="Train Loss", color="#1f77b4", lw=2)
-    ax1.plot(epochs, history["val_loss"], label="Val Loss", color="#ff7f0e", lw=2, linestyle="--")
+    ax1.plot(epochs, history["train_loss"], label="Train Loss", color="#1f77b4", lw=2, marker='o', markersize=5)
+    ax1.plot(epochs, history["val_loss"], label="Val Loss", color="#ff7f0e", lw=2, linestyle="--", marker='s', markersize=5)
     ax1.set_title(f"{model_name}: Loss over Epochs", fontsize=14, fontweight="bold")
-    ax1.set_xlabel("Epoch")
-    ax1.set_ylabel("Loss")
+    ax1.set_xlabel("Epoch", fontsize=11)
+    ax1.set_ylabel("Loss", fontsize=11)
     ax1.grid(True, alpha=0.3)
-    ax1.legend()
+    ax1.legend(loc="upper right")
+    if len(epochs) > 0:
+        ax1.set_xticks(list(epochs))
     
     # Accuracy plot
-    ax2.plot(epochs, history["train_acc"], label="Train Top-1", color="#2ca02c", lw=2)
-    ax2.plot(epochs, history["val_acc"], label="Val Top-1", color="#d62728", lw=2, linestyle="--")
-    ax2.plot(epochs, history["val_top3"], label="Val Top-3", color="#9467bd", lw=1.5, linestyle=":")
+    ax2.plot(epochs, history["train_acc"], label="Train Top-1", color="#2ca02c", lw=2, marker='o', markersize=5)
+    ax2.plot(epochs, history["val_acc"], label="Val Top-1", color="#d62728", lw=2, linestyle="--", marker='s', markersize=5)
+    ax2.plot(epochs, history["val_top3"], label="Val Top-3", color="#9467bd", lw=1.5, linestyle=":", marker='^', markersize=4)
     ax2.set_title(f"{model_name}: Accuracy over Epochs", fontsize=14, fontweight="bold")
-    ax2.set_xlabel("Epoch")
-    ax2.set_ylabel("Accuracy (%)")
+    ax2.set_xlabel("Epoch", fontsize=11)
+    ax2.set_ylabel("Accuracy (%)", fontsize=11)
     ax2.grid(True, alpha=0.3)
-    ax2.legend()
+    ax2.legend(loc="lower right")
+    if len(epochs) > 0:
+        ax2.set_xticks(list(epochs))
     
     plt.tight_layout()
     plt.savefig(output_path, dpi=300)
