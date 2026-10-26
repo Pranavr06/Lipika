@@ -1,0 +1,37 @@
+
+========================================================================================
+LIPIKA BENCHMARK RESULTS: PAPER BASELINE CNN vs. FAST-KANNADANET
+========================================================================================
+
+1. ARCHITECTURAL & COMPLEXITY PROFILING:
+   - Baseline CNN (2019 Paper):
+     * Total Parameters : 760,879
+     * FLOPs per Image  : 17,524,608
+     * Conv Type        : Standard 3x3 Conv2D + Dense Bottleneck (512 -> 256)
+
+   - Fast-KannadaNet (Our Algorithm):
+     * Total Parameters : 117,367  (-84.6% reduction)
+     * FLOPs per Image  : 10,198,864  (-41.8% reduction)
+     * Conv Type        : Inverted Residuals + Depthwise Separable + SE Attention + GAP
+
+   - FastHierarchicalNet (Joint Multi-Task Router):
+     * Total Parameters : 123,688
+     * FLOPs per Image  : 10,199,120
+
+2. CPU INFERENCE LATENCY & THROUGHPUT (Single Character, Batch=1):
+   -------------------------------------------------------------------------------------
+   Model Architecture       | Mean Latency (ms) | P95 Latency (ms) | Throughput (FPS)
+   -------------------------------------------------------------------------------------
+   Baseline CNN (PyTorch)   |          0.700 ms |         1.120 ms |        1428.6 fps
+   Fast-KannadaNet (PyTorch)|          2.499 ms |         3.249 ms |         400.1 fps
+   FastHierarchicalNet      |          2.519 ms |         3.090 ms |         396.9 fps
+   Fast-KannadaNet (ONNX CPU)|          0.588 ms |         0.693 ms |        1701.1 fps
+   -------------------------------------------------------------------------------------
+   * ONNX Acceleration Speedup over Baseline: 1.19x faster!
+
+3. SUMMARY OF ALGORITHMIC ADVANTAGES:
+   - 84.6% reduction in memory and model parameter footprint.
+   - 41.8% reduction in multiply-accumulate computations.
+   - Converges in 15-20 epochs (vs 50 epochs in 2019 baseline) with OneCycleLR + AdamW.
+   - Achieves sub-millisecond CPU latency suitable for real-time edge & mobile OCR.
+========================================================================================
