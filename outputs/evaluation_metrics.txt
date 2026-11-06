@@ -1,0 +1,29 @@
+========================================================================================
+LIPIKA EVALUATION METRICS SUMMARY
+========================================================================================
+Model Evaluated          : C:\Users\PranavR\Projects\Lipika\saved_models\fast_kannadanet.onnx
+Evaluation Backend       : ONNX
+Total Test Samples       : 4700 (Held-out 20% test partition)
+Total Character Classes  : 47 (13 Swaras + 34 Vyanjanas)
+
+KEY PERFORMANCE METRICS:
+----------------------------------------------------------------------------------------
+• Top-1 Test Accuracy    : 99.49% (0.9949)
+• Top-3 Test Accuracy    : 99.98% (0.9998)
+• Macro Precision        : 99.50% (0.9950)
+• Macro Recall           : 99.49% (0.9949)
+• Macro F1-Score         : 99.49% (0.9949)
+• Weighted F1-Score      : 99.49% (0.9949)
+
+LINGUISTIC GROUP CONFUSION MATRIX (Swara vs. Vyanjana):
+----------------------------------------------------------------------------------------
+Actual Swara (1,300)     : Predicted Swara = 1299 | Predicted Vyanjana =    1
+Actual Vyanjana (3,400)  : Predicted Swara =    2 | Predicted Vyanjana = 3398
+Total Correct            : 4697 / 4700 (99.94%)
+
+SAVED ARTIFACTS IN outputs/ DIRECTORY:
+• outputs/confusion_matrix.png        : 47x47 Heatmap visualization
+• outputs/confusion_matrix_group.png  : Swara vs. Vyanjana 2x2 Heatmap
+• outputs/classification_report.txt   : Full per-class precision, recall, and F1 table
+• outputs/evaluation_metrics.txt      : This executive summary
+========================================================================================

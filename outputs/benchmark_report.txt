@@ -22,12 +22,12 @@ LIPIKA BENCHMARK RESULTS: PAPER BASELINE CNN vs. FAST-KANNADANET
    -------------------------------------------------------------------------------------
    Model Architecture       | Mean Latency (ms) | P95 Latency (ms) | Throughput (FPS)
    -------------------------------------------------------------------------------------
-   Baseline CNN (PyTorch)   |          0.700 ms |         1.120 ms |        1428.6 fps
-   Fast-KannadaNet (PyTorch)|          2.499 ms |         3.249 ms |         400.1 fps
-   FastHierarchicalNet      |          2.519 ms |         3.090 ms |         396.9 fps
-   Fast-KannadaNet (ONNX CPU)|          0.588 ms |         0.693 ms |        1701.1 fps
+   Baseline CNN (PyTorch)   |          1.152 ms |         1.554 ms |         867.7 fps
+   Fast-KannadaNet (PyTorch)|          2.779 ms |         4.386 ms |         359.9 fps
+   FastHierarchicalNet      |          2.998 ms |         4.584 ms |         333.6 fps
+   Fast-KannadaNet (ONNX CPU)|          0.362 ms |         0.571 ms |        2759.3 fps
    -------------------------------------------------------------------------------------
-   * ONNX Acceleration Speedup over Baseline: 1.19x faster!
+   * ONNX Acceleration Speedup over Baseline: 3.18x faster!
 
 3. SUMMARY OF ALGORITHMIC ADVANTAGES:
    - 84.6% reduction in memory and model parameter footprint.
