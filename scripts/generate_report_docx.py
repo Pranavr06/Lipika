@@ -771,6 +771,21 @@ def create_report():
 
     add_image_figure("outputs/figure_5_2_performance_comparison.png", "Figure 5.2: Comparison of candidate classifiers across five evaluation metrics.", width_inches=6.0)
 
+    add_para(
+        "This graph illustrates the comparative results for the candidate algorithms on the basis of accuracy, precision, "
+        "recall, F1-score, and ROC-AUC metrics. Fast-KannadaNet gives the best performance with the highest value of F1-score "
+        "and ROC-AUC, which is 0.995 and 0.999 respectively."
+    )
+
+    add_image_figure("outputs/figure_5_3_confusion_matrix_snippet.png", "Confusion matrix output for Fast-KannadaNet (linguistic macro-groups).", width_inches=4.6)
+
+    add_para(
+        "From the confusion matrix, the number of Swaras (vowels) and Vyanjanas (consonants) the model predicted correctly "
+        "is 1,299 and 3,398 respectively. On the other hand, only 1 Swara was falsely predicted to be a Vyanjana and 2 Vyanjanas "
+        "were falsely predicted to be Swaras. Across all 47 individual character classes, 4,676 of the 4,700 held-out test samples "
+        "were classified accurately (99.49% Top-1 accuracy). The above figures apply to the 4,700 held-out test partition."
+    )
+
     add_heading_2("5.4 CPU Inference Latency and Hardware Profiling")
     add_para(
         "Inference latency was benchmarked with batch size = 1 over 100 warmup iterations followed by 500 profiling runs:",
