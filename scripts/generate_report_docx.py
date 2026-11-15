@@ -751,50 +751,25 @@ def create_report():
         "ensures that global accuracy is not distorted by majority-class bias."
     )
 
-    add_heading_2("5.3 Architectural & Computational Complexity Profiling")
+    add_heading_2("5.2 Model Summary")
     add_para(
-        "Table 5.1 compares the structural complexity of the 2019 IEEE baseline against Fast-KannadaNet:",
-        bold_prefix="Complexity Analysis: "
+        "Table 5.1 and Figure 5.1 present the comprehensive performance and complexity profiling across candidate models "
+        "evaluated on the 4,700 held-out test records. Fast-KannadaNet compiled into ONNX Runtime ranks first with the highest "
+        "F1-score (0.995) and lowest single-character latency (0.588 ms), outperforming the baseline CNN and classical HOG-SVM pipelines.",
+        bold_prefix="Model Performance Ranking: "
     )
 
-    # Complexity Table
-    table_bench = doc.add_table(rows=3, cols=5)
-    table_bench.alignment = WD_TABLE_ALIGNMENT.CENTER
-    set_table_borders(table_bench)
-
-    bench_headers = ["Model Architecture", "Parameters", "FLOPs / Image", "Disk Footprint", "Conv Paradigm"]
-    for j, h in enumerate(bench_headers):
-        c = table_bench.cell(0, j)
-        set_cell_background(c, "EAF1F8")
-        set_cell_margins(c, 40, 40, 60, 60)
-        p = c.paragraphs[0]
-        p.alignment = WD_ALIGN_PARAGRAPH.CENTER
-        r = p.add_run(h)
-        r.bold = True
-        r.font.size = Pt(9.5)
-
-    bench_rows = [
-        ("IEEE Baseline (2019 Paper)", "760,879", "17.52 M", "3.05 MB", "Standard 3×3 Conv + Dense Bottleneck"),
-        ("Fast-KannadaNet (Ours)", "117,367", "10.20 M", "0.47 MB", "Inverted Residuals + SE + GAP")
-    ]
-    for i, row in enumerate(bench_rows):
-        for j, val in enumerate(row):
-            c = table_bench.cell(i+1, j)
-            set_cell_margins(c, 40, 40, 60, 60)
-            p = c.paragraphs[0]
-            p.alignment = WD_ALIGN_PARAGRAPH.CENTER
-            r = p.add_run(val)
-            r.font.size = Pt(9)
-            if j == 0:
-                r.bold = True
+    add_image_figure("outputs/figure_5_1_model_summary.png", "Figure 5.1: Final candidate model comparison table on test data.", width_inches=6.0)
 
     add_para(
-        "Fast-KannadaNet achieves an 84.6% reduction in total trainable parameters (slashed from 760,879 to 117,367) and a "
-        "41.8% reduction in floating-point operations (reduced from 17.52 million to 10.20 million FLOPs).",
-        italic_prefix="Key Finding: "
+        "The screenshot in Figure 5.1 depicts the empirical evaluation across six distinct model configurations. Fast-KannadaNet (ONNX) "
+        "ranks first with a Macro F1-score of 0.995 and Top-1 accuracy of 99.49%, followed closely by Fast-KannadaNet under native PyTorch CPU "
+        "(0.995 F1, 2.499 ms latency), FastHierarchicalNet (0.988 F1), and the reproduced 2019 IEEE baseline CNN (0.943 F1, 760K parameters). "
+        "Classical machine learning approaches—such as HOG paired with multiclass SVM (0.727 F1) and pixel-level KNN template matching (0.455 F1)—lag "
+        "significantly behind, demonstrating the necessity of convolutional spatial feature extractors for cursive Kannada script."
     )
 
-    add_image_figure("outputs/diagram_benchmark_comparison.png", "Figure 5.1: Comparative profiling of parameters, FLOPs, and latency.")
+    add_image_figure("outputs/diagram_benchmark_comparison.png", "Figure 5.2: Hardware latency, throughput, and architectural parameter comparison.", width_inches=5.8)
 
     add_heading_2("5.4 CPU Inference Latency and Hardware Profiling")
     add_para(
