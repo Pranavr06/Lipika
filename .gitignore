@@ -68,3 +68,9 @@ debug_*.png
 *_debug*
 temp*
 *.tmp
+
+# Word reports & local documents
+*.docx
+*.doc
+outputs/*.docx
+
