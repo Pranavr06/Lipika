@@ -769,7 +769,7 @@ def create_report():
         "significantly behind, demonstrating the necessity of convolutional spatial feature extractors for cursive Kannada script."
     )
 
-    add_image_figure("outputs/diagram_benchmark_comparison.png", "Figure 5.2: Hardware latency, throughput, and architectural parameter comparison.", width_inches=5.8)
+    add_image_figure("outputs/figure_5_2_performance_comparison.png", "Figure 5.2: Comparison of candidate classifiers across five evaluation metrics.", width_inches=6.0)
 
     add_heading_2("5.4 CPU Inference Latency and Hardware Profiling")
     add_para(
@@ -856,17 +856,17 @@ def create_report():
 
     add_heading_2("5.6 Confusion Matrix and Linguistic Error Analysis")
     add_para(
-        "Figure 5.2 illustrates the complete 47×47 multi-class confusion matrix on the held-out test dataset. Because the test set "
+        "Figure 5.3 illustrates the complete 47×47 multi-class confusion matrix on the held-out test dataset. Because the test set "
         "comprises exactly 100 test samples per character class, the main diagonal values directly represent the exact per-class "
         "percentage accuracy (out of 100). Almost all 47 classes exhibit scores of 99% or 100% on the diagonal.",
         bold_prefix="Confusion Matrix Diagonal: "
     )
 
-    add_image_figure("outputs/confusion_matrix.png", "Figure 5.2: Multi-class confusion matrix (47×47 classes) showing exact diagonal sample counts.")
+    add_image_figure("outputs/confusion_matrix.png", "Figure 5.3: Multi-class confusion matrix (47×47 classes) showing exact diagonal sample counts.")
 
     add_para(
         "To analyze whether classification errors cross grammatical boundaries, predictions were aggregated into a 2×2 linguistic macro-group "
-        "confusion matrix (Table 5.4 and Figure 5.3):",
+        "confusion matrix (Table 5.4 and Figure 5.4):",
         bold_prefix="Linguistic Macro Group Analysis: "
     )
 
@@ -906,16 +906,16 @@ def create_report():
         "This confirms that Fast-KannadaNet successfully captures high-level grammatical morphology."
     )
 
-    add_image_figure("outputs/confusion_matrix_group.png", "Figure 5.3: Linguistic macro-group confusion matrix (Swara vs. Vyanjana).")
+    add_image_figure("outputs/confusion_matrix_group.png", "Figure 5.4: Linguistic macro-group confusion matrix (Swara vs. Vyanjana).")
 
     add_heading_2("5.7 Comparative Results Summary")
     add_para(
-        "Figure 5.4 displays the training loss and validation accuracy curves over 5 epochs. Fast-KannadaNet converges rapidly, reaching "
+        "Figure 5.5 displays the training loss and validation accuracy curves over 5 epochs. Fast-KannadaNet converges rapidly, reaching "
         "88.00% validation accuracy by the conclusion of the very first epoch and surpassing 99% within 5 epochs.",
         bold_prefix="Convergence Characteristics: "
     )
 
-    add_image_figure("outputs/curves_fastnet_all.png", "Figure 5.4: Fast-KannadaNet training loss and validation accuracy curves.")
+    add_image_figure("outputs/curves_fastnet_all.png", "Figure 5.5: Fast-KannadaNet training loss and validation accuracy curves.")
 
     add_heading_2("5.8 Real-World Handwriting Generalization and Canvas Deployment")
     add_para(
